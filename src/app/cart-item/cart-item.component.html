@@ -1,0 +1,18 @@
+<!--Modal 2-->
+<div id="confirmCartPopUp" class="modal" *ngIf="!reRender">
+  <!--Modal 2 content-->
+  <div class="modal-content">
+    <span class="closeThis" (click)="closeModal()">&times;</span>
+    <div id="confirmCartPopUp">
+
+      <p> Do you wish to add this product to your cart?</p>
+      <p><img src={{newItem.img}}/>&nbsp;{{newItem.description}}</p>
+      <p><button (click)='IncQuan()'>+</button>
+        <button (click)='DecQuan()'>-</button>
+        <label>{{newItem.quantity}}</label></p>
+
+      <button (click)="addToCart()">Yes, add it to my cart.</button>
+        <button (click)="closeModal()">No, continue shopping</button>
+    </div>
+  </div>
+</div>

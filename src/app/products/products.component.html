@@ -1,0 +1,75 @@
+
+<app-checkout></app-checkout>
+
+<h2>Products</h2>
+
+<table *ngFor="let product of Products"  class="infoTooltip">
+  <div *ngIf="(product.stock >= 1)">
+    <tr>
+      <td colspan='2'>
+        <p>{{product.productName}}</p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan='2'><button (click)="confirmCartAdd(product)">
+      <img src={{product.img}} /></button> <!--just pass 'product' through function confirmCartAdd()? -->
+        <div class='tooltip' style='display:none'>{{product.description}}</div>
+      </td>
+    </tr>
+    <tr>
+      <td><button (click)="manageInventory(product.stock, product.id, product.productName)" ng-init="product=product"><img src='./assets/icons/gear.png'/></button></td>
+      <td>{{product.stock}}</td>
+    </tr>
+    <tr>
+      <td>
+        <h4>${{product.price}}</h4></td>
+    </tr>
+  </div>
+</table>
+
+<app-cart-item [newItem]="selectedProduct"></app-cart-item>
+
+<h2> Out of Stock </h2>
+
+<div *ngFor="let product of Products" class="infoTooltip">
+  <table *ngIf="(product.stock==0)">
+    <tr>
+      <td colspan='2'>
+        <p>{{product.productName}}</p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan='2'><button>
+          <img src={{product.img}} /> </button>
+        <div class='tooltip' style='display:none'>{{product.description}}</div>
+      </td>
+    </tr>
+    <tr>
+      <td><button (click)="manageInventory(product.stock, product.price, product.id, product.productName)" ng-init="product=product"><img src='./assets/icons/gear.png'/></button></td>
+      <td>{{product.stock}}</td>
+    </tr>
+    <tr>
+      <td>
+        <h4>${{product.price}}</h4></td>
+    </tr>
+  </table>
+</div>
+
+
+
+
+
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div>
+      <p> Update the physical inventory for <label id='productName'></label> by using the '+' or '-' below...</p>
+      <p><button (click)='addInventory()'>+</button>
+        <button (click)='deleteInventory()'>-</button></p>
+      <p><label id='stock'></label></p>
+      <p><button (click)='updateInventory()'>confirm changes</button></p>
+      <!--updateInventory() will obtain current listed stock of 'id' x, via either localStorage or simply from
+      mock-products.ts (db) and push updated stock forming new db stored in localStorage -->
+    </div>
+  </div>
+</div>
