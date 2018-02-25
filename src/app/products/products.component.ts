@@ -49,9 +49,10 @@ export class ProductsComponent implements OnInit {
     document.getElementById('stock').innerHTML = stock;
     document.getElementById('productName').innerHTML = productName;
 
-    span.onclick = function() {
+  /*  span.onclick = function() {
       modal.style.display = 'none';
-    };
+    }; */
+
     window.onclick = function(event) {
       if (event.target === modal) { // (1 === '1') > is false ......  (1 == '1') > is true
       // !== same as === (equal); != same as == (not equal)

@@ -4,16 +4,16 @@ import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 
 import { AppComponent } from './app.component';
 import { ProductsComponent } from './products/products.component';
-import { CheckoutComponent } from './checkout/checkout.component';
 import { CartItemComponent } from './cart-item/cart-item.component';
 import { CartService } from './cart.service';
+import { InventoryComponent } from './inventory/inventory.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductsComponent,
-    CheckoutComponent,
-    CartItemComponent
+    CartItemComponent,
+    InventoryComponent
   ],
   imports: [
     BrowserModule,

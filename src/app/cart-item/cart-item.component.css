@@ -37,3 +37,60 @@
     cursor: pointer;
 
 }
+.closeModal {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.closeModal:hover,
+.closeModal:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+#checkoutBtn {
+  background-color: #4CAF50;
+   border: none;
+   color: white;
+   padding: 15px 32px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 16px;
+   margin: 4px 2px;
+   cursor: pointer;
+}
+#shoppingCartTable {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+
+}
+
+#shoppingCartTable td, #shoppingCartTable th {
+    /*border: 1px solid #ddd;*/
+    padding: 8px;
+}
+
+#shoppingCartTable tr:nth-child(even){background-color: #f2f2f2;
+}
+
+#shoppingCartTable tr:hover {background-color: #ddd;}
+
+#shoppingCartTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #4CAF50;
+    color: white;
+}
+
+div.pinned { /* pins shopping cart button to right side of screen  */
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 50px;
+  height: 50px;
+}

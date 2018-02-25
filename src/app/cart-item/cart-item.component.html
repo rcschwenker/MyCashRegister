@@ -16,3 +16,53 @@
     </div>
   </div>
 </div>
+
+<div class="pinned">
+  <button (click)="checkOut()">
+  <img src="./assets/icons/shoppingcart.png"/>
+  </button>
+</div>
+
+<!--Modal 3-->
+<div id="shoppingCart" class="modal" *ngIf="!rerender">
+  <!--Modal 3 Content-->
+  <div class="modal-content">
+    <span class="closeModal" (click)="close()">&times;</span>
+    <h3> Shopping Cart </h3>
+    <table id="shoppingCartTable">
+      <thead>
+        <th> Item </th>
+        <th> </th>
+        <th> </th>
+        <th> Price </th>
+        <th> Quantity </th>
+        <th> Total </th>
+        <th> Delete? </th>
+        <tr *ngFor="let cartItem of this.shoppingCart">
+          <td>{{cartItem.productName}}</td>
+          <td><img src={{cartItem.img}} /></td>
+          <td>{{cartItem.description}}</td>
+          <td>${{cartItem.price}}</td>
+          <td>{{cartItem.quantity}}</td>
+          <td>${{cartItem.price * cartItem.quantity}}</td>
+          <td><button><img src="./assets/icons/trashcan.png" (click)="deleteItem(cartItem.id, shoppingCart)" /></button></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Estimated Total:</td>
+          <td></td>
+          <td style = "font-weight:bold">${{cartTotal}}</td>
+          <td></td>
+        </tr>
+        <tr>
+          <button id="checkoutBtn" (click)="confirmCheckout()"> Checkout
+      </button>
+        </tr>
+
+      </thead>
+      <tbody id="tbodyCart"></tbody>
+    </table>
+  </div>
+</div>
