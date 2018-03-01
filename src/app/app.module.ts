@@ -7,6 +7,7 @@ import { ProductsComponent } from './products/products.component';
 import { CartItemComponent } from './cart-item/cart-item.component';
 import { CartService } from './cart.service';
 import { InventoryComponent } from './inventory/inventory.component';
+import { InventoryService } from './inventory.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { InventoryComponent } from './inventory/inventory.component';
     BrowserModule,
     FormsModule
   ],
-  providers: [CartService],
+  providers: [CartService, InventoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

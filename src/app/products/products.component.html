@@ -11,12 +11,12 @@
     </tr>
     <tr>
       <td colspan='2'><button (click)="confirmCartAdd(product)">
-      <img src={{product.img}} /></button> <!--just pass 'product' through function confirmCartAdd()? -->
+      <img src={{product.img}} /></button>
         <div class='tooltip' style='display:none'>{{product.description}}</div>
       </td>
     </tr>
     <tr>
-      <td><button (click)="manageInventory(product.stock, product.id, product.productName)" ng-init="product=product"><img src='./assets/icons/gear.png'/></button></td>
+      <td><button (click)="manageInventory(product)" ng-init="product=product"><img src='./assets/icons/gear.png'/></button></td>
       <td>{{product.stock}}</td>
     </tr>
     <tr>
@@ -44,7 +44,7 @@
       </td>
     </tr>
     <tr>
-      <td><button (click)="manageInventory(product.stock, product.price, product.id, product.productName)" ng-init="product=product"><img src='./assets/icons/gear.png'/></button></td>
+      <td><button (click)="manageInventory(product)" ng-init="product=product"><img src='./assets/icons/gear.png'/></button></td>
       <td>{{product.stock}}</td>
     </tr>
     <tr>
@@ -56,17 +56,15 @@
 
 
 
-
-
-<div id="myModal" class="modal">
+<div id="inventoryModal" class="modal">
   <div class="modal-content">
-    <span class="close">&times;</span>
+    <span class="close"(click)="close()">&times;</span>
     <div>
-      <p> Update the physical inventory for <label id='productName'></label> by using the '+' or '-' below...</p>
-      <p><button (click)='addInventory()'>+</button>
-        <button (click)='deleteInventory()'>-</button></p>
-      <p><label id='stock'></label></p>
-      <p><button (click)='updateInventory()'>confirm changes</button></p>
+      <p> Update the physical inventory for {{this.selectedProduct.productName}} by using the '+' or '-' below...</p>
+      <p><button (click)='addToInventory(this.selectedProduct)'>+</button>
+        <button (click)='deleteFromInventory(this.selectedProduct)'>-</button></p>
+      <p>{{this.selectedProduct.stock}}</p>
+      <p><button (click)='updateInventory(product)'>confirm changes</button></p>
       <!--updateInventory() will obtain current listed stock of 'id' x, via either localStorage or simply from
       mock-products.ts (db) and push updated stock forming new db stored in localStorage -->
     </div>

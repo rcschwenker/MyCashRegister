@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Product } from '../product'; // MASTER data model
 import { PRODUCTS } from '../mock-products'; // database -- added
-import { CartService } from '../cart.service'; // service
+import { CartService } from '../cart.service';
+import { InventoryService } from '../inventory.service';
 
 @Component({
   selector: 'app-cart-item',
@@ -15,14 +16,13 @@ export class CartItemComponent implements OnInit {
   shoppingCart: Product[] = this.cartService.get();
   @Input() PRODUCTS: Product;
 
-  constructor(private cartService: CartService, private cdRef: ChangeDetectorRef) { } // making cartService available
+  constructor(private cartService: CartService) { } // making cartService available
 
   ngOnInit() { this.estimateTotal(); }
+
   doReRender() {
     this.rerender = true;
-    // this.cdRef.detectChanges();
     this.rerender = false;
-    // this.cdRef.detectChanges();
   }
   closeModal() {
     const modal = document.getElementById('confirmCartPopUp');
@@ -52,10 +52,7 @@ export class CartItemComponent implements OnInit {
       this.cartService.set(newCart);
       this.shoppingCart = newCart; // sets newCart (Which simply houses newItem) to cartService
     }
-    // this.shoppingCart = this.cartService.get();
-    // this.cartService.get(); // acts as a 'refresher'
-    // this.changeDetectionRef.detectChanges();
-    this.doReRender();
+    this.doReRender(); // test later to see if still necessary
     this.estimateTotal();
   }
 
@@ -76,7 +73,6 @@ export class CartItemComponent implements OnInit {
   checkOut() {
     const modal = document.getElementById('shoppingCart'); // pulls up modal
     modal.style.display = 'block';
-    // this.doReRender();
   }
 
   deleteItem(id, shoppingCart) {
